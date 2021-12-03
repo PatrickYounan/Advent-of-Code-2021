@@ -52,27 +52,21 @@ class DayThree : Day {
         co2Elements.addAll(inputs)
 
         var index = 0
-        while (oxygenElements.size > 1) {
-            val (ones, zeroes) = calculateArrays(oxygenElements)
-            for (i in oxygenElements.indices.reversed()) {
-                val element = oxygenElements[i][index]
-                if (ones[index] >= zeroes[index] && element == '0' || ones[index] < zeroes[index] && element == '1')
-                    oxygenElements.removeAt(i)
-            }
-            index++
-        }
-
+        while (oxygenElements.size > 1)
+            removeElement(index++, oxygenElements, '0', '1')
         index = 0
-        while (co2Elements.size > 1) {
-            val (ones, zeroes) = calculateArrays(co2Elements)
-            for (i in co2Elements.indices.reversed()) {
-                val element = co2Elements[i][index]
-                if (ones[index] >= zeroes[index] && element == '1' || ones[index] < zeroes[index] && element == '0')
-                    co2Elements.removeAt(i)
-            }
-            index++
-        }
+        while (co2Elements.size > 1)
+            removeElement(index++, co2Elements, '1', '0')
         println((oxygenElements[0].toInt(2) * co2Elements[0].toInt(2)))
+    }
+
+    private fun removeElement(index: Int, elements: MutableList<String>, firstBit: Char, lastBit: Char) {
+        val (ones, zeroes) = calculateArrays(elements)
+        for (i in elements.indices.reversed()) {
+            val element = elements[i][index]
+            if (ones[index] >= zeroes[index] && element == firstBit || ones[index] < zeroes[index] && element == lastBit)
+                elements.removeAt(i)
+        }
     }
 
 }
