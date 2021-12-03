@@ -60,6 +60,7 @@ class DayThree : Day {
         var index = 0
         while (elements.size > 1) {
             val (ones, zeroes) = calculateArrays(elements)
+
             for (i in elements.indices.reversed()) {
                 val element = elements[i][index]
                 if (ones[index] >= zeroes[index] && element == firstBit || ones[index] < zeroes[index] && element == lastBit)
