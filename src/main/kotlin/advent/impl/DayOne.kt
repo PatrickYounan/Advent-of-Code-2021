@@ -1,7 +1,7 @@
 package advent.impl
 
 import advent.Day
-import advent.Input
+import advent.readList
 import java.nio.file.Paths
 
 /**
@@ -10,7 +10,7 @@ import java.nio.file.Paths
 class DayOne : Day {
 
     override fun solve() {
-        val inputs = Input.read(Paths.get("data/dayone.txt"))
+        val inputs = readList(Paths.get("data/dayone.txt"))
 
         println(getChanges(inputs))
 
