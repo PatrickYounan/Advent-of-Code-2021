@@ -51,21 +51,21 @@ class DayThree : Day {
         oxygenElements.addAll(inputs)
         co2Elements.addAll(inputs)
 
-        var index = 0
-        while (oxygenElements.size > 1)
-            removeElement(index++, oxygenElements, '0', '1')
-        index = 0
-        while (co2Elements.size > 1)
-            removeElement(index++, co2Elements, '1', '0')
+        removeElements(oxygenElements, '0', '1')
+        removeElements(co2Elements, '1', '0')
         println((oxygenElements[0].toInt(2) * co2Elements[0].toInt(2)))
     }
 
-    private fun removeElement(index: Int, elements: MutableList<String>, firstBit: Char, lastBit: Char) {
-        val (ones, zeroes) = calculateArrays(elements)
-        for (i in elements.indices.reversed()) {
-            val element = elements[i][index]
-            if (ones[index] >= zeroes[index] && element == firstBit || ones[index] < zeroes[index] && element == lastBit)
-                elements.removeAt(i)
+    private fun removeElements(elements: MutableList<String>, firstBit: Char, lastBit: Char) {
+        var index = 0
+        while (elements.size > 1) {
+            val (ones, zeroes) = calculateArrays(elements)
+            for (i in elements.indices.reversed()) {
+                val element = elements[i][index]
+                if (ones[index] >= zeroes[index] && element == firstBit || ones[index] < zeroes[index] && element == lastBit)
+                    elements.removeAt(i)
+            }
+            index++
         }
     }
 
