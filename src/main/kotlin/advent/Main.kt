@@ -1,7 +1,7 @@
 package advent
 
-import advent.impl.DayTwo
+import advent.impl.DayThree
 
 fun main() {
-    solve(DayTwo())
+    solve(DayThree())
 }

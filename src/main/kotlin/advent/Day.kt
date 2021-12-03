@@ -7,7 +7,6 @@ import java.nio.file.Path
  * @author Patrick Younan
  */
 interface Day {
-
     fun solve()
 }
 
@@ -18,7 +17,7 @@ fun solve(day: Day) {
     println("Solution took $elapsed ms.")
 }
 
-fun readList(path: Path): MutableList<Int> {
+fun readIntList(path: Path): MutableList<Int> {
     val lines = Files.readAllLines(path)
     val inputs = mutableListOf<Int>()
     lines.forEach { inputs += it.toInt() }
